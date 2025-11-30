@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Studio Nepal | Digital Solutions for Modern Business</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (Lightweight Icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050a14',     // Even darker background
+                            card: '#0f172a',     // Card background
+                            cyan: '#00f2ff',     // Bright Cyan
+                            purple: '#bd00ff',   // Electric Purple
+                            accent: '#2563eb'    // Blue accent
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050a14;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent);
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Text Glow */
+        .text-glow {
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <!-- LOGO -->
+                    <img class="h-10 w-auto rounded-md" src="Gemini_Generated_Image_ylwqlqylwqlqylwq.jpg" alt="AI Studio Nepal">
+                    <span class="font-mono font-bold text-xl tracking-tighter text-white hidden sm:block">AI STUDIO <span class="text-brand-cyan">NEPAL</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#process" class="hover:text-brand-cyan transition-colors text-sm font-medium">How It Works</a>
+                        <a href="#services" class="hover:text-brand-cyan transition-colors text-sm font-medium">Services</a>
+                        <a href="#pricing" class="hover:text-brand-cyan transition-colors text-sm font-medium">Pricing</a>
+                        <a href="#contact" class="bg-white text-brand-dark px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-cyan hover:text-black transition-all">Start Project</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white hover:text-brand-cyan">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#process" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">How It Works</a>
+                <a href="#services" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="#contact" class="text-brand-cyan block px-3 py-2 rounded-md text-base font-bold">Start Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center min-h-screen">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-20 pointer-events-none"></div>
+        <!-- Glow Orb -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/10 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-xs font-mono mb-6 reveal">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                </span>
+                ACCEPTING NEW PROJECTS
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 reveal delay-100 leading-tight">
+                Turn Your Idea Into a <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-purple text-glow">Digital Empire.</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400 reveal delay-200">
+                We use AI to build websites, create marketing content, and deploy chat agents for your business. Fast, affordable, and done-for-you.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal delay-300">
+                <a href="#contact" class="bg-gradient-to-r from-brand-cyan to-brand-accent text-brand-dark px-8 py-4 rounded-full font-bold hover:shadow-[0_0_20px_rgba(0,242,255,0.4)] transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="rocket" class="w-5 h-5"></i> Launch My Business
+                </a>
+                <a href="#process" class="glass-panel text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> See How It Works
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY SELLING POINTS (Why Us) -->
+    <section class="py-20 border-y border-white/5 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- USP 1 -->
+                <div class="p-6 reveal">
+                    <div class="w-14 h-14 mx-auto bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-4 text-brand-cyan">
+                        <i data-lucide="zap" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Launch in Days, Not Months</h3>
+                    <p class="text-gray-400 text-sm">We use AI to accelerate coding and design. What takes others 6 weeks, we deliver in 5 days.</p>
+                </div>
+                <!-- USP 2 -->
+                <div class="p-6 reveal delay-100">
+                    <div class="w-14 h-14 mx-auto bg-brand-purple/10 rounded-2xl flex items-center justify-center mb-4 text-brand-purple">
+                        <i data-lucide="wallet" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Affordable for Everyone</h3>
+                    <p class="text-gray-400 text-sm">High-tech doesn't mean high cost. Our AI efficiencies mean we pass the savings directly to you.</p>
+                </div>
+                <!-- USP 3 -->
+                <div class="p-6 reveal delay-200">
+                    <div class="w-14 h-14 mx-auto bg-green-500/10 rounded-2xl flex items-center justify-center mb-4 text-green-400">
+                        <i data-lucide="bot" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">No Tech Skills Needed</h3>
+                    <p class="text-gray-400 text-sm">You don't need to know code. We handle the hosting, domains, and AI setup. It's 100% Done-For-You.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section id="process" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-cyan font-mono mb-2 tracking-widest">THE PROTOCOL</h2>
+                <h3 class="text-4xl font-bold">How We Bring Your Idea to Life</h3>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-cyan/30 to-transparent -translate-y-1/2 z-0"></div>
+
+                <div class="grid md:grid-cols-3 gap-12 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="w-12 h-12 bg-brand-dark border border-brand-cyan rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10 shadow-[0_0_15px_rgba(0,242,255,0.3)]">1</div>
+                        <h4 class="text-xl font-bold mb-3">Discovery</h4>
+                        <p class="text-gray-400 text-sm">You tell us your business idea, your target audience, and your goals. We map out the digital strategy.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal delay-100">
+                        <div class="w-12 h-12 bg-brand-dark border border-brand-purple rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10 shadow-[0_0_15px_rgba(189,0,255,0.3)]">2</div>
+                        <h4 class="text-xl font-bold mb-3">AI Synthesis</h4>
+                        <p class="text-gray-400 text-sm">Our AI Architects build your brand, generate your website code, and train your support chatbot.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal delay-200">
+                        <div class="w-12 h-12 bg-brand-dark border border-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10">3</div>
+                        <h4 class="text-xl font-bold mb-3">Launch</h4>
+                        <p class="text-gray-400 text-sm">We go live. Your website starts ranking, and your AI agent starts chatting with customers instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED SERVICES -->
+    <section id="services" class="py-24 bg-black/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+            
+            <!-- Service 1: Web -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div>
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-cyan/10 text-brand-cyan text-xs font-mono">CORE INFRASTRUCTURE</div>
+                    <h3 class="text-3xl font-bold mb-4">Intelligent Websites</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Most websites are just digital brochures. Ours are growth engines. Built with modern code (not slow builders), fully mobile-responsive, and written with AI-optimized copy to help you rank on Google.</p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> Blazing Fast Load Times</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> SEO Optimized Content</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> Mobile First Design</li>
+                    </ul>
+                    <a href="#contact" class="text-brand-cyan hover:text-white font-bold inline-flex items-center gap-2 group">
+                        Build My Site <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-r-4 border-brand-cyan h-64 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-20"></div>
+                    <i data-lucide="monitor" class="w-32 h-32 text-gray-600 opacity-50"></i>
+                    <div class="absolute bottom-4 right-4 font-mono text-xs text-brand-cyan">v2.0_DEPLOYED</div>
+                </div>
+            </div>
+
+            <!-- Service 2: Agents -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div class="order-2 md:order-1 glass-panel p-6 rounded-2xl border-l-4 border-brand-purple h-64 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-bl from-brand-purple/20 to-transparent opacity-20"></div>
+                    <i data-lucide="message-square-dashed" class="w-32 h-32 text-gray-600 opacity-50"></i>
+                    <div class="absolute bottom-4 left-4 font-mono text-xs text-brand-purple">AI_AGENT_ACTIVE</div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-purple/10 text-brand-purple text-xs font-mono">AUTOMATION</div>
+                    <h3 class="text-3xl font-bold mb-4">24/7 AI Chat Agents</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Imagine an employee who never sleeps, speaks multiple languages, and answers instantly. Our AI agents sit on your website or Facebook page to capture leads and answer questions while you rest.</p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Instant Replies</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Lead Qualification</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Appointment Booking</li>
+                    </ul>
+                    <a href="#contact" class="text-brand-purple hover:text-white font-bold inline-flex items-center gap-2 group">
+                        Hire an Agent <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service 3: Branding -->
+            <div class="grid md:grid-cols-2 gap-12 items-center reveal">
+                <div>
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-pink-500/10 text-pink-500 text-xs font-mono">CREATIVE</div>
+                    <h3 class="text-3xl font-bold mb-4">Digital Marketing & Branding</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">We build your brand identity from scratch. Logos, color palettes, and social media posts generated by AI but curated by humans. We make you look like a Fortune 500 company on a startup budget.</p>
+                    <a href="#contact" class="text-pink-500 hover:text-white font-bold inline-flex items-center gap-2 group">
+                        Start Branding <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-r-4 border-pink-500 h-64 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-transparent opacity-20"></div>
+                    <i data-lucide="palette" class="w-32 h-32 text-gray-600 opacity-50"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-cyan font-mono mb-2">INVESTMENT</h2>
+                <h3 class="text-4xl font-bold">Transparent Pricing</h3>
+                <p class="text-gray-400 mt-4">No hidden fees. Choose the engine that fits your speed.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-gray-500 transition-colors reveal">
+                    <h4 class="text-xl font-bold text-white mb-2">Starter</h4>
+                    <p class="text-gray-400 text-sm mb-6">For new businesses needing a face.</p>
+                    <div class="text-3xl font-bold text-white mb-6">Contact Us<span class="text-sm font-normal text-gray-500">/project</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> AI Logo Design</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 3-Page Fast Website</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> Domain Setup</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> Basic Contact Form</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 border border-white/20 rounded-lg text-center font-bold hover:bg-white/10 transition-colors">Get Started</a>
+                </div>
+
+                <!-- Growth (Highlighted) -->
+                <div class="glass-panel p-8 rounded-2xl border-brand-cyan/50 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(0,242,255,0.1)] reveal delay-100">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-cyan text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
+                    <h4 class="text-xl font-bold text-brand-cyan mb-2">Growth</h4>
+                    <p class="text-gray-400 text-sm mb-6">For businesses ready to scale.</p>
+                    <div class="text-3xl font-bold text-white mb-6">Best Value<span class="text-sm font-normal text-gray-500">/project</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>Everything in Starter</strong></li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 5-Page Premium Website</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>AI Chatbot Integration</strong></li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 1 Month AI Social Content</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 bg-brand-cyan text-brand-dark rounded-lg text-center font-bold hover:brightness-110 transition-all">Choose Growth</a>
+                </div>
+
+                <!-- Pro -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-purple/50 transition-colors reveal delay-200">
+                    <h4 class="text-xl font-bold text-white mb-2">Autopilot</h4>
+                    <p class="text-gray-400 text-sm mb-6">Full digital automation.</p>
+                    <div class="text-3xl font-bold text-white mb-6">Custom<span class="text-sm font-normal text-gray-500">/quote</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Advanced E-commerce Site</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Custom Trained AI Agents</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Email Marketing Automation</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> AI Video Commercials</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 border border-brand-purple/50 text-brand-purple rounded-lg text-center font-bold hover:bg-brand-purple/10 transition-colors">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="py-24 bg-black/40">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-bold">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="glass-panel rounded-lg overflow-hidden reveal">
+                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold">I am not tech savvy. Can I manage this?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <div class="px-6 pb-4 text-gray-400 text-sm">
+                            Absolutely. We build "Done-For-You" solutions. We handle the technical setup, hosting, and updates. You just focus on running your business.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="glass-panel rounded-lg overflow-hidden reveal delay-100">
+                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold">How much does an AI website cost?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <div class="px-6 pb-4 text-gray-400 text-sm">
+                            Our packages start very affordably because we use AI to speed up development. Contact us for a custom quote, but expect to pay 30-40% less than a traditional agency.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="glass-panel rounded-lg overflow-hidden reveal delay-200">
+                    <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold">What is an AI Agent?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-black/20">
+                        <div class="px-6 pb-4 text-gray-400 text-sm">
+                            An AI agent is like a smart chatbot. Unlike old chatbots that only knew "yes" or "no", ours can understand natural language, answer specific questions about your products, and guide customers to buy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="py-24 bg-gradient-to-t from-black to-brand-dark border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-4 reveal">Ready to Upgrade?</h2>
+            <p class="text-gray-400 mb-8 reveal">Fill out the form below to initialize your digital transformation.</p>
+            
+            <form action="contact.php" method="POST" class="glass-panel p-8 rounded-2xl text-left reveal delay-100 border border-brand-cyan/20 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">NAME</label>
+                        <input type="text" name="name" required class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">EMAIL</label>
+                        <input type="email" name="email" required class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="john@example.com">
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">INTEREST</label>
+                    <select name="service" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                        <option>Growth Package (Web + Chatbot)</option>
+                        <option>Starter Package (Web Only)</option>
+                        <option>AI Branding / Marketing</option>
+                        <option>Custom AI Solution</option>
+                    </select>
+                </div>
+
+                <div class="mb-8">
+                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">MESSAGE</label>
+                    <textarea name="message" rows="4" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="Tell us about your business..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-brand-accent text-brand-dark font-bold py-4 rounded-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-5 h-5"></i> Send Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-12 bg-black">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <img class="h-8 w-auto rounded" src="Gemini_Generated_Image_ylwqlqylwqlqylwq.jpg" alt="Logo">
+                <span class="font-mono font-bold text-lg text-white">AI STUDIO <span class="text-brand-cyan">NEPAL</span></span>
+            </div>
+            <p class="text-gray-600 text-sm">© 2025 AI Studio Nepal. Engineering the Future.</p>
+        </div>
+    </footer>
+
+    <!-- Minimal JS -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // 1. Scroll Reveal Animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 2. Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-btn');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // Toggle current
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.classList.remove('open');
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Close others (optional - currently allowing multiple open)
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // 3. Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand-dark/90', 'backdrop-blur-md', 'shadow-lg');
+                nav.classList.remove('border-transparent');
+            } else {
+                nav.classList.remove('bg-brand-dark/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
