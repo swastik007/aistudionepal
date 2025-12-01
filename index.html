@@ -3,7 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Studio Nepal | Digital Solutions for Modern Business</title>
+    
+    <!-- SEO & META DATA (GEO Optimized) -->
+    <title>AI Studio Nepal | Best AI Agency & Web Design in Nepal</title>
+    <meta name="description" content="AI Studio Nepal is the first AI Automation Agency in Nepal. We provide affordable website design, AI chatbots, digital marketing, and business automation in Kathmandu.">
+    <meta name="keywords" content="AI Agency Nepal, Website Design Nepal, Digital Marketing Kathmandu, AI Chatbot Nepal, Business Automation Nepal, Sasto Website Design, SEO Service Nepal, Tech Company Kathmandu, AI Studio Nepal, Artificial Intelligence Services">
+    <meta name="author" content="AI Studio Nepal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aistudionepal.com">
+
+    <!-- Open Graph / Facebook (Social Sharing) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aistudionepal.com">
+    <meta property="og:title" content="AI Studio Nepal | Digital Solutions for Modern Business">
+    <meta property="og:description" content="Transform your business with Nepal's first AI agency. Websites, Chatbots, and Marketing Automation at affordable prices.">
+    <meta property="og:image" content="assets/ai-studio-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aistudionepal.com">
+    <meta property="twitter:title" content="AI Studio Nepal | AI & Web Design">
+    <meta property="twitter:description" content="Transform your business with Nepal's first AI agency. Websites, Chatbots, and Marketing Automation.">
+    <meta property="twitter:image" content="assets/ai-studio-logo.png">
+
+    <!-- Structured Data (JSON-LD) for AI Search Engine Understanding -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "AI Studio Nepal",
+      "image": "https://www.aistudionepal.com/assets/ai-studio-logo.png",
+      "@id": "https://www.aistudionepal.com",
+      "url": "https://www.aistudionepal.com",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kathmandu",
+        "addressCountry": "NP"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://www.facebook.com/aistudionepal",
+        "https://www.instagram.com/aistudionepal"
+      ],
+      "description": "AI Studio Nepal provides AI-powered digital solutions including website development, custom chatbots, and automated marketing for businesses in Nepal."
+    }
+    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +70,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Mukta:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons (Lightweight Icons) -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -24,6 +83,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
+                        nepali: ['Mukta', 'sans-serif'], // Added Nepali Font
                     },
                     colors: {
                         brand: {
@@ -49,6 +109,23 @@
             overflow-x: hidden;
         }
         
+        /* Language Toggling Logic */
+        /* Default: Show English, Hide Nepali */
+        .lang-np { display: none; }
+        
+        /* Nepali Mode: Hide English, Show Nepali */
+        body.nepali-mode .lang-en { display: none; }
+        body.nepali-mode .lang-np { 
+            display: inline; 
+            font-family: 'Mukta', sans-serif; /* Use Nepali font */
+            line-height: 1.6;
+        }
+        body.nepali-mode h1 .lang-np, 
+        body.nepali-mode h2 .lang-np, 
+        body.nepali-mode h3 .lang-np {
+            display: block; /* Ensure headers break correctly */
+        }
+
         /* Subtle Grid Background */
         .bg-grid {
             background-size: 40px 40px;
@@ -106,22 +183,53 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0 flex items-center gap-3">
                     <!-- LOGO -->
-                    <img class="h-10 w-auto rounded-md" src="Gemini_Generated_Image_ylwqlqylwqlqylwq.jpg" alt="AI Studio Nepal">
-                    <span class="font-mono font-bold text-xl tracking-tighter text-white hidden sm:block">AI STUDIO <span class="text-brand-cyan">NEPAL</span></span>
+                    <img class="h-10 w-auto rounded-md" src="assets/ai-studio-logo.png" alt="AI Studio Nepal">
+                    <span class="font-mono font-bold text-xl tracking-tighter text-white hidden">AI STUDIO <span class="text-brand-cyan">NEPAL</span></span>
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#process" class="hover:text-brand-cyan transition-colors text-sm font-medium">How It Works</a>
-                        <a href="#services" class="hover:text-brand-cyan transition-colors text-sm font-medium">Services</a>
-                        <a href="#pricing" class="hover:text-brand-cyan transition-colors text-sm font-medium">Pricing</a>
-                        <a href="#contact" class="bg-white text-brand-dark px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-cyan hover:text-black transition-all">Start Project</a>
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex items-baseline space-x-8">
+                        <a href="#process" class="hover:text-brand-cyan transition-colors text-sm font-medium">
+                            <span class="lang-en">How It Works</span>
+                            <span class="lang-np">कसरी काम गर्छ</span>
+                        </a>
+                        <a href="#services" class="hover:text-brand-cyan transition-colors text-sm font-medium">
+                            <span class="lang-en">Services</span>
+                            <span class="lang-np">सेवाहरू</span>
+                        </a>
+                        <a href="#pricing" class="hover:text-brand-cyan transition-colors text-sm font-medium">
+                            <span class="lang-en">Pricing</span>
+                            <span class="lang-np">मूल्य</span>
+                        </a>
                     </div>
+                    
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-xs font-mono">
+                        <i data-lucide="globe" class="w-3 h-3"></i>
+                        <span class="lang-en font-bold text-brand-cyan">EN</span>
+                        <span class="lang-en text-gray-500">|</span>
+                        <span class="lang-en text-gray-400">NP</span>
+                        
+                        <span class="lang-np text-gray-400">EN</span>
+                        <span class="lang-np text-gray-500">|</span>
+                        <span class="lang-np font-bold text-brand-cyan">NP</span>
+                    </button>
+
+                    <a href="#contact" class="bg-white text-brand-dark px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-cyan hover:text-black transition-all">
+                        <span class="lang-en">Start Project</span>
+                        <span class="lang-np">सुरु गर्नुहोस्</span>
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden">
+                <div class="flex items-center gap-4 md:hidden">
+                     <!-- Mobile Language Toggle -->
+                    <button id="lang-toggle-mobile" class="flex items-center gap-2 px-2 py-1 rounded border border-white/20 text-xs font-mono">
+                        <span class="lang-en font-bold text-brand-cyan">EN</span>
+                        <span class="lang-np font-bold text-brand-cyan">नेपाली</span>
+                    </button>
+
                     <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white hover:text-brand-cyan">
                         <i data-lucide="menu" class="w-8 h-8"></i>
                     </button>
@@ -132,10 +240,22 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#process" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">How It Works</a>
-                <a href="#services" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                <a href="#pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
-                <a href="#contact" class="text-brand-cyan block px-3 py-2 rounded-md text-base font-bold">Start Project</a>
+                <a href="#process" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <span class="lang-en">How It Works</span>
+                    <span class="lang-np">कसरी काम गर्छ</span>
+                </a>
+                <a href="#services" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <span class="lang-en">Services</span>
+                    <span class="lang-np">सेवाहरू</span>
+                </a>
+                <a href="#pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <span class="lang-en">Pricing</span>
+                    <span class="lang-np">मूल्य</span>
+                </a>
+                <a href="#contact" class="text-brand-cyan block px-3 py-2 rounded-md text-base font-bold">
+                    <span class="lang-en">Start Project</span>
+                    <span class="lang-np">प्रोजेक्ट सुरु गर्नुहोस्</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -153,24 +273,30 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
                 </span>
-                ACCEPTING NEW PROJECTS
+                <span class="lang-en">ACCEPTING NEW PROJECTS</span>
+                <span class="lang-np">नयाँ प्रोजेक्टहरू लिइँदै</span>
             </div>
             
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 reveal delay-100 leading-tight">
-                Turn Your Idea Into a <br>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-purple text-glow">Digital Empire.</span>
+                <span class="lang-en">Turn Your Idea Into a <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-purple text-glow">Digital Empire.</span></span>
+                <span class="lang-np">तपाईंको सोचलाई <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-purple text-glow">डिजिटल साम्राज्यमा</span> बदल्नुहोस्।</span>
             </h1>
             
             <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400 reveal delay-200">
-                We use AI to build websites, create marketing content, and deploy chat agents for your business. Fast, affordable, and done-for-you.
+                <span class="lang-en">We use AI to build websites, create marketing content, and deploy chat agents for your business. Fast, affordable, and done-for-you.</span>
+                <span class="lang-np">हामी तपाईंको व्यवसायको लागि वेबसाइट बनाउन, मार्केटिङ सामग्री तयार गर्न र च्याट एजेन्टहरू राख्न AI को प्रयोग गर्छौं। छिटो, सस्तो र सबै हामीले नै गरिदिने।</span>
             </p>
             
             <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal delay-300">
                 <a href="#contact" class="bg-gradient-to-r from-brand-cyan to-brand-accent text-brand-dark px-8 py-4 rounded-full font-bold hover:shadow-[0_0_20px_rgba(0,242,255,0.4)] transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="rocket" class="w-5 h-5"></i> Launch My Business
+                    <i data-lucide="rocket" class="w-5 h-5"></i> 
+                    <span class="lang-en">Launch My Business</span>
+                    <span class="lang-np">व्यवसाय सुरु गर्नुहोस्</span>
                 </a>
                 <a href="#process" class="glass-panel text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-                    <i data-lucide="play-circle" class="w-5 h-5"></i> See How It Works
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 
+                    <span class="lang-en">See How It Works</span>
+                    <span class="lang-np">प्रक्रिया हेर्नुहोस्</span>
                 </a>
             </div>
         </div>
@@ -185,24 +311,42 @@
                     <div class="w-14 h-14 mx-auto bg-brand-cyan/10 rounded-2xl flex items-center justify-center mb-4 text-brand-cyan">
                         <i data-lucide="zap" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Launch in Days, Not Months</h3>
-                    <p class="text-gray-400 text-sm">We use AI to accelerate coding and design. What takes others 6 weeks, we deliver in 5 days.</p>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="lang-en">Launch in Days, Not Months</span>
+                        <span class="lang-np">महिनौं होइन, दिनमै सुरु गर्नुहोस्</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        <span class="lang-en">We use AI to accelerate coding and design. What takes others 6 weeks, we deliver in 5 days.</span>
+                        <span class="lang-np">हामी कोडिङ र डिजाइन छिटो गर्न AI प्रयोग गर्छौं। अरुलाई ६ हप्ता लाग्ने काम हामी ५ दिनमा गर्छौं।</span>
+                    </p>
                 </div>
                 <!-- USP 2 -->
                 <div class="p-6 reveal delay-100">
                     <div class="w-14 h-14 mx-auto bg-brand-purple/10 rounded-2xl flex items-center justify-center mb-4 text-brand-purple">
                         <i data-lucide="wallet" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Affordable for Everyone</h3>
-                    <p class="text-gray-400 text-sm">High-tech doesn't mean high cost. Our AI efficiencies mean we pass the savings directly to you.</p>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="lang-en">Affordable for Everyone</span>
+                        <span class="lang-np">सबैका लागि किफायती</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        <span class="lang-en">High-tech doesn't mean high cost. Our AI efficiencies mean we pass the savings directly to you.</span>
+                        <span class="lang-np">उच्च प्रविधि महँगो हुनुपर्दछ भन्ने छैन। AI को प्रयोगले लागत घटाउँछ, जसको फाइदा तपाईंलाई हुन्छ।</span>
+                    </p>
                 </div>
                 <!-- USP 3 -->
                 <div class="p-6 reveal delay-200">
                     <div class="w-14 h-14 mx-auto bg-green-500/10 rounded-2xl flex items-center justify-center mb-4 text-green-400">
                         <i data-lucide="bot" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">No Tech Skills Needed</h3>
-                    <p class="text-gray-400 text-sm">You don't need to know code. We handle the hosting, domains, and AI setup. It's 100% Done-For-You.</p>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="lang-en">No Tech Skills Needed</span>
+                        <span class="lang-np">प्राविधिक ज्ञान नचाहिने</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        <span class="lang-en">You don't need to know code. We handle the hosting, domains, and AI setup. It's 100% Done-For-You.</span>
+                        <span class="lang-np">तपाईंलाई कोडिङ आउनु पर्दैन। हामी होस्टिङ, डोमेन र AI सेटअप सबै हेर्छौं। यो १००% तपाइँको लागि तयार हुन्छ।</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -212,8 +356,14 @@
     <section id="process" class="py-24 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-cyan font-mono mb-2 tracking-widest">THE PROTOCOL</h2>
-                <h3 class="text-4xl font-bold">How We Bring Your Idea to Life</h3>
+                <h2 class="text-brand-cyan font-mono mb-2 tracking-widest">
+                    <span class="lang-en">THE PROTOCOL</span>
+                    <span class="lang-np">प्रक्रिया</span>
+                </h2>
+                <h3 class="text-4xl font-bold">
+                    <span class="lang-en">How We Bring Your Idea to Life</span>
+                    <span class="lang-np">हामी कसरी तपाईंको विचारलाई साकार पार्छौं</span>
+                </h3>
             </div>
 
             <div class="relative">
@@ -224,22 +374,40 @@
                     <!-- Step 1 -->
                     <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal">
                         <div class="w-12 h-12 bg-brand-dark border border-brand-cyan rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10 shadow-[0_0_15px_rgba(0,242,255,0.3)]">1</div>
-                        <h4 class="text-xl font-bold mb-3">Discovery</h4>
-                        <p class="text-gray-400 text-sm">You tell us your business idea, your target audience, and your goals. We map out the digital strategy.</p>
+                        <h4 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Discovery</span>
+                            <span class="lang-np">योजना (Discovery)</span>
+                        </h4>
+                        <p class="text-gray-400 text-sm">
+                            <span class="lang-en">You tell us your business idea, your target audience, and your goals. We map out the digital strategy.</span>
+                            <span class="lang-np">तपाईं हामीलाई आफ्नो व्यवसायिक विचार र लक्ष्य सुनाउनुहोस्। हामी डिजिटल रणनीति तयार गर्छौं।</span>
+                        </p>
                     </div>
 
                     <!-- Step 2 -->
                     <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal delay-100">
                         <div class="w-12 h-12 bg-brand-dark border border-brand-purple rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10 shadow-[0_0_15px_rgba(189,0,255,0.3)]">2</div>
-                        <h4 class="text-xl font-bold mb-3">AI Synthesis</h4>
-                        <p class="text-gray-400 text-sm">Our AI Architects build your brand, generate your website code, and train your support chatbot.</p>
+                        <h4 class="text-xl font-bold mb-3">
+                            <span class="lang-en">AI Synthesis</span>
+                            <span class="lang-np">AI निर्माण</span>
+                        </h4>
+                        <p class="text-gray-400 text-sm">
+                            <span class="lang-en">Our AI Architects build your brand, generate your website code, and train your support chatbot.</span>
+                            <span class="lang-np">हाम्रो AI ले तपाईंको ब्रान्ड बनाउँछ, वेबसाइटको कोड लेख्छ र तपाईंको च्याटबोटलाई तालिम दिन्छ।</span>
+                        </p>
                     </div>
 
                     <!-- Step 3 -->
                     <div class="glass-panel p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 reveal delay-200">
                         <div class="w-12 h-12 bg-brand-dark border border-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 relative z-10">3</div>
-                        <h4 class="text-xl font-bold mb-3">Launch</h4>
-                        <p class="text-gray-400 text-sm">We go live. Your website starts ranking, and your AI agent starts chatting with customers instantly.</p>
+                        <h4 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Launch</span>
+                            <span class="lang-np">सुरुवात (Launch)</span>
+                        </h4>
+                        <p class="text-gray-400 text-sm">
+                            <span class="lang-en">We go live. Your website starts ranking, and your AI agent starts chatting with customers instantly.</span>
+                            <span class="lang-np">हामी लाइभ जान्छौं। तपाईंको वेबसाइट गुगलमा देखिन थाल्छ र AI एजेन्टले ग्राहकहरूसँग कुरा गर्न थाल्छ।</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -253,16 +421,36 @@
             <!-- Service 1: Web -->
             <div class="grid md:grid-cols-2 gap-12 items-center reveal">
                 <div>
-                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-cyan/10 text-brand-cyan text-xs font-mono">CORE INFRASTRUCTURE</div>
-                    <h3 class="text-3xl font-bold mb-4">Intelligent Websites</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Most websites are just digital brochures. Ours are growth engines. Built with modern code (not slow builders), fully mobile-responsive, and written with AI-optimized copy to help you rank on Google.</p>
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-cyan/10 text-brand-cyan text-xs font-mono">
+                        <span class="lang-en">CORE INFRASTRUCTURE</span>
+                        <span class="lang-np">मुख्य पूर्वाधार</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">
+                        <span class="lang-en">Intelligent Websites</span>
+                        <span class="lang-np">स्मार्ट वेबसाइटहरू</span>
+                    </h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        <span class="lang-en">Most websites are just digital brochures. Ours are growth engines. Built with modern code (not slow builders), fully mobile-responsive, and written with AI-optimized copy to help you rank on Google.</span>
+                        <span class="lang-np">धेरैजसो वेबसाइटहरू केवल डिजिटल ब्रोशर जस्तै हुन्छन्। हाम्रो वेबसाइटहरू विकासको इन्जिन हुन्। आधुनिक कोडले बनेको, मोबाइलमा छिटो खुल्ने र गुगलमा र्याङ्क गर्न मद्दत गर्ने।</span>
+                    </p>
                     <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> Blazing Fast Load Times</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> SEO Optimized Content</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> Mobile First Design</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> 
+                            <span class="lang-en">Blazing Fast Load Times</span>
+                            <span class="lang-np">अति छिटो लोड हुने</span>
+                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> 
+                            <span class="lang-en">SEO Optimized Content</span>
+                            <span class="lang-np">SEO अप्टिमाइज गरिएको सामग्री</span>
+                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> 
+                            <span class="lang-en">Mobile First Design</span>
+                            <span class="lang-np">मोबाइल मैत्री डिजाइन</span>
+                        </li>
                     </ul>
                     <a href="#contact" class="text-brand-cyan hover:text-white font-bold inline-flex items-center gap-2 group">
-                        Build My Site <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <span class="lang-en">Build My Site</span>
+                        <span class="lang-np">वेबसाइट बनाउनुहोस्</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
                 <div class="glass-panel p-6 rounded-2xl border-r-4 border-brand-cyan h-64 flex items-center justify-center relative overflow-hidden">
@@ -280,16 +468,36 @@
                     <div class="absolute bottom-4 left-4 font-mono text-xs text-brand-purple">AI_AGENT_ACTIVE</div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-purple/10 text-brand-purple text-xs font-mono">AUTOMATION</div>
-                    <h3 class="text-3xl font-bold mb-4">24/7 AI Chat Agents</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Imagine an employee who never sleeps, speaks multiple languages, and answers instantly. Our AI agents sit on your website or Facebook page to capture leads and answer questions while you rest.</p>
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-brand-purple/10 text-brand-purple text-xs font-mono">
+                        <span class="lang-en">AUTOMATION</span>
+                        <span class="lang-np">अटोमेसन</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">
+                        <span class="lang-en">24/7 AI Chat Agents</span>
+                        <span class="lang-np">२४/७ AI च्याट एजेन्टहरू</span>
+                    </h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        <span class="lang-en">Imagine an employee who never sleeps, speaks multiple languages, and answers instantly. Our AI agents sit on your website or Facebook page to capture leads and answer questions while you rest.</span>
+                        <span class="lang-np">कल्पना गर्नुहोस् यस्तो कर्मचारीको जो कहिल्यै सुत्दैन र तुरुन्तै जवाफ दिन्छ। हाम्रो AI एजेन्टहरू तपाईंको वेबसाइट वा फेसबुकमा बस्छन् र तपाईं आराम गर्दा पनि ग्राहकहरूसँग कुरा गर्छन्।</span>
+                    </p>
                     <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Instant Replies</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Lead Qualification</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> Appointment Booking</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> 
+                            <span class="lang-en">Instant Replies</span>
+                            <span class="lang-np">तत्काल जवाफ</span>
+                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> 
+                            <span class="lang-en">Lead Qualification</span>
+                            <span class="lang-np">ग्राहक पहिचान (Lead Qualification)</span>
+                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-purple"></i> 
+                            <span class="lang-en">Appointment Booking</span>
+                            <span class="lang-np">अपोइन्टमेन्ट बुकिङ</span>
+                        </li>
                     </ul>
                     <a href="#contact" class="text-brand-purple hover:text-white font-bold inline-flex items-center gap-2 group">
-                        Hire an Agent <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <span class="lang-en">Hire an Agent</span>
+                        <span class="lang-np">एजेन्ट राख्नुहोस्</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -297,11 +505,22 @@
             <!-- Service 3: Branding -->
             <div class="grid md:grid-cols-2 gap-12 items-center reveal">
                 <div>
-                    <div class="inline-block px-3 py-1 mb-4 rounded bg-pink-500/10 text-pink-500 text-xs font-mono">CREATIVE</div>
-                    <h3 class="text-3xl font-bold mb-4">Digital Marketing & Branding</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">We build your brand identity from scratch. Logos, color palettes, and social media posts generated by AI but curated by humans. We make you look like a Fortune 500 company on a startup budget.</p>
+                    <div class="inline-block px-3 py-1 mb-4 rounded bg-pink-500/10 text-pink-500 text-xs font-mono">
+                        <span class="lang-en">CREATIVE</span>
+                        <span class="lang-np">सिर्जनात्मक</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">
+                        <span class="lang-en">Digital Marketing & Branding</span>
+                        <span class="lang-np">डिजिटल मार्केटिङ र ब्रान्डिङ</span>
+                    </h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        <span class="lang-en">We build your brand identity from scratch. Logos, color palettes, and social media posts generated by AI but curated by humans. We make you look like a Fortune 500 company on a startup budget.</span>
+                        <span class="lang-np">हामी तपाईंको ब्रान्डको पहिचान सुरुदेखि बनाउँछौं। लोगोस, रङहरू, र सोसल मिडिया पोस्टहरू AI द्वारा सिर्जना गरिन्छ। हामी तपाईंलाई थोरै बजेटमा पनि ठूलो कम्पनी जस्तै देखाउँछौं।</span>
+                    </p>
                     <a href="#contact" class="text-pink-500 hover:text-white font-bold inline-flex items-center gap-2 group">
-                        Start Branding <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <span class="lang-en">Start Branding</span>
+                        <span class="lang-np">ब्रान्डिङ सुरु गर्नुहोस्</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
                 <div class="glass-panel p-6 rounded-2xl border-r-4 border-pink-500 h-64 flex items-center justify-center relative overflow-hidden">
@@ -317,53 +536,139 @@
     <section id="pricing" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-cyan font-mono mb-2">INVESTMENT</h2>
-                <h3 class="text-4xl font-bold">Transparent Pricing</h3>
-                <p class="text-gray-400 mt-4">No hidden fees. Choose the engine that fits your speed.</p>
+                <h2 class="text-brand-cyan font-mono mb-2">
+                    <span class="lang-en">INVESTMENT</span>
+                    <span class="lang-np">लगानी</span>
+                </h2>
+                <h3 class="text-4xl font-bold">
+                    <span class="lang-en">Transparent Pricing</span>
+                    <span class="lang-np">पारदर्शी मूल्य</span>
+                </h3>
+                <p class="text-gray-400 mt-4">
+                    <span class="lang-en">No hidden fees. Choose the engine that fits your speed.</span>
+                    <span class="lang-np">कुनै लुकेको शुल्क छैन। आफ्नो आवश्यकता अनुसार प्याकेज छान्नुहोस्।</span>
+                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Starter -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-gray-500 transition-colors reveal">
-                    <h4 class="text-xl font-bold text-white mb-2">Starter</h4>
-                    <p class="text-gray-400 text-sm mb-6">For new businesses needing a face.</p>
-                    <div class="text-3xl font-bold text-white mb-6">Contact Us<span class="text-sm font-normal text-gray-500">/project</span></div>
+                    <h4 class="text-xl font-bold text-white mb-2">
+                        <span class="lang-en">Starter</span>
+                        <span class="lang-np">सुरुवाती (Starter)</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-6">
+                        <span class="lang-en">For new businesses needing a face.</span>
+                        <span class="lang-np">नयाँ व्यवसायहरूको लागि।</span>
+                    </p>
+                    <div class="text-3xl font-bold text-white mb-6">
+                        <span class="lang-en">Contact Us</span><span class="lang-np">सम्पर्क</span>
+                        <span class="text-sm font-normal text-gray-500">/project</span>
+                    </div>
                     <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> AI Logo Design</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 3-Page Fast Website</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> Domain Setup</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> Basic Contact Form</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 
+                            <span class="lang-en">AI Logo Design</span>
+                            <span class="lang-np">AI लोगो डिजाइन</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 
+                            <span class="lang-en">3-Page Fast Website</span>
+                            <span class="lang-np">३ पेजको वेबसाइट</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 
+                            <span class="lang-en">Domain Setup</span>
+                            <span class="lang-np">डोमेन सेटअप</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-gray-500"></i> 
+                            <span class="lang-en">Basic Contact Form</span>
+                            <span class="lang-np">सम्पर्क फारम</span>
+                        </li>
                     </ul>
-                    <a href="#contact" class="block w-full py-3 border border-white/20 rounded-lg text-center font-bold hover:bg-white/10 transition-colors">Get Started</a>
+                    <a href="#contact" class="block w-full py-3 border border-white/20 rounded-lg text-center font-bold hover:bg-white/10 transition-colors">
+                        <span class="lang-en">Get Started</span>
+                        <span class="lang-np">सुरु गर्नुहोस्</span>
+                    </a>
                 </div>
 
                 <!-- Growth (Highlighted) -->
                 <div class="glass-panel p-8 rounded-2xl border-brand-cyan/50 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(0,242,255,0.1)] reveal delay-100">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-cyan text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
-                    <h4 class="text-xl font-bold text-brand-cyan mb-2">Growth</h4>
-                    <p class="text-gray-400 text-sm mb-6">For businesses ready to scale.</p>
-                    <div class="text-3xl font-bold text-white mb-6">Best Value<span class="text-sm font-normal text-gray-500">/project</span></div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-cyan text-black px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                        <span class="lang-en">Most Popular</span>
+                        <span class="lang-np">धेरै रुचाइएको</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-cyan mb-2">
+                        <span class="lang-en">Growth</span>
+                        <span class="lang-np">विकास (Growth)</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-6">
+                        <span class="lang-en">For businesses ready to scale.</span>
+                        <span class="lang-np">व्यवसाय विस्तार गर्न चाहनेहरूका लागि।</span>
+                    </p>
+                    <div class="text-3xl font-bold text-white mb-6">
+                        <span class="lang-en">Best Value</span>
+                        <span class="lang-np">उत्तम मूल्य</span>
+                        <span class="text-sm font-normal text-gray-500">/project</span>
+                    </div>
                     <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>Everything in Starter</strong></li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 5-Page Premium Website</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>AI Chatbot Integration</strong></li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 1 Month AI Social Content</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>
+                            <span class="lang-en">Everything in Starter</span>
+                            <span class="lang-np">Starter को सबै सुविधाहरू</span>
+                        </strong></li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 
+                            <span class="lang-en">5-Page Premium Website</span>
+                            <span class="lang-np">५ पेजको प्रिमियम वेबसाइट</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> <strong>
+                            <span class="lang-en">AI Chatbot Integration</span>
+                            <span class="lang-np">AI च्याटबोट इन्टिग्रेशन</span>
+                        </strong></li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-cyan"></i> 
+                            <span class="lang-en">1 Month AI Social Content</span>
+                            <span class="lang-np">१ महिनाको सोसल मिडिया पोस्ट</span>
+                        </li>
                     </ul>
-                    <a href="#contact" class="block w-full py-3 bg-brand-cyan text-brand-dark rounded-lg text-center font-bold hover:brightness-110 transition-all">Choose Growth</a>
+                    <a href="#contact" class="block w-full py-3 bg-brand-cyan text-brand-dark rounded-lg text-center font-bold hover:brightness-110 transition-all">
+                        <span class="lang-en">Choose Growth</span>
+                        <span class="lang-np">Growth छान्नुहोस्</span>
+                    </a>
                 </div>
 
                 <!-- Pro -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-brand-purple/50 transition-colors reveal delay-200">
-                    <h4 class="text-xl font-bold text-white mb-2">Autopilot</h4>
-                    <p class="text-gray-400 text-sm mb-6">Full digital automation.</p>
-                    <div class="text-3xl font-bold text-white mb-6">Custom<span class="text-sm font-normal text-gray-500">/quote</span></div>
+                    <h4 class="text-xl font-bold text-white mb-2">
+                        <span class="lang-en">Autopilot</span>
+                        <span class="lang-np">अटोपाइलट (Autopilot)</span>
+                    </h4>
+                    <p class="text-gray-400 text-sm mb-6">
+                        <span class="lang-en">Full digital automation.</span>
+                        <span class="lang-np">पूर्ण डिजिटल अटोमेसन।</span>
+                    </p>
+                    <div class="text-3xl font-bold text-white mb-6">
+                        <span class="lang-en">Custom</span>
+                        <span class="lang-np">कस्टम</span>
+                        <span class="text-sm font-normal text-gray-500">/quote</span>
+                    </div>
                     <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Advanced E-commerce Site</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Custom Trained AI Agents</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> Email Marketing Automation</li>
-                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> AI Video Commercials</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> 
+                            <span class="lang-en">Advanced E-commerce Site</span>
+                            <span class="lang-np">एडभान्स्ड ई-कमर्स साइट</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> 
+                            <span class="lang-en">Custom Trained AI Agents</span>
+                            <span class="lang-np">कस्टम तालिम प्राप्त AI एजेन्टहरू</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> 
+                            <span class="lang-en">Email Marketing Automation</span>
+                            <span class="lang-np">ईमेल मार्केटिङ अटोमेसन</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-brand-purple"></i> 
+                            <span class="lang-en">AI Video Commercials</span>
+                            <span class="lang-np">AI भिडियो विज्ञापनहरू</span>
+                        </li>
                     </ul>
-                    <a href="#contact" class="block w-full py-3 border border-brand-purple/50 text-brand-purple rounded-lg text-center font-bold hover:bg-brand-purple/10 transition-colors">Contact Sales</a>
+                    <a href="#contact" class="block w-full py-3 border border-brand-purple/50 text-brand-purple rounded-lg text-center font-bold hover:bg-brand-purple/10 transition-colors">
+                        <span class="lang-en">Contact Sales</span>
+                        <span class="lang-np">सम्पर्क गर्नुहोस्</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -373,19 +678,26 @@
     <section class="py-24 bg-black/40">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-bold">Frequently Asked Questions</h2>
+                <h2 class="text-3xl font-bold">
+                    <span class="lang-en">Frequently Asked Questions</span>
+                    <span class="lang-np">प्राय: सोधिने प्रश्नहरू</span>
+                </h2>
             </div>
 
             <div class="space-y-4">
                 <!-- Q1 -->
                 <div class="glass-panel rounded-lg overflow-hidden reveal">
                     <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold">I am not tech savvy. Can I manage this?</span>
+                        <span class="font-bold">
+                            <span class="lang-en">I am not tech savvy. Can I manage this?</span>
+                            <span class="lang-np">मलाई प्रविधिको ज्ञान छैन। के म यो चलाउन सक्छु?</span>
+                        </span>
                         <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-black/20">
                         <div class="px-6 pb-4 text-gray-400 text-sm">
-                            Absolutely. We build "Done-For-You" solutions. We handle the technical setup, hosting, and updates. You just focus on running your business.
+                            <span class="lang-en">Absolutely. We build "Done-For-You" solutions. We handle the technical setup, hosting, and updates. You just focus on running your business.</span>
+                            <span class="lang-np">मज्जाले! हामी "तपाईंको लागि तयार" (Done-For-You) समाधानहरू दिन्छौं। हामी प्राविधिक सेटिङ, होस्टिङ र अपडेटहरू हेर्छौं। तपाईं केवल आफ्नो व्यवसायमा ध्यान दिनुहोस्।</span>
                         </div>
                     </div>
                 </div>
@@ -393,12 +705,16 @@
                 <!-- Q2 -->
                 <div class="glass-panel rounded-lg overflow-hidden reveal delay-100">
                     <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold">How much does an AI website cost?</span>
+                        <span class="font-bold">
+                            <span class="lang-en">How much does an AI website cost?</span>
+                            <span class="lang-np">AI वेबसाइटको कति पर्छ?</span>
+                        </span>
                         <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-black/20">
                         <div class="px-6 pb-4 text-gray-400 text-sm">
-                            Our packages start very affordably because we use AI to speed up development. Contact us for a custom quote, but expect to pay 30-40% less than a traditional agency.
+                            <span class="lang-en">Our packages start very affordably because we use AI to speed up development. Contact us for a custom quote, but expect to pay 30-40% less than a traditional agency.</span>
+                            <span class="lang-np">हाम्रो प्याकेजहरू धेरै किफायती छन् किनकि हामी AI प्रयोग गरेर छिटो काम गर्छौं। परम्परागत एजेन्सीहरू भन्दा ३०-४०% कम शुल्क लाग्न सक्छ।</span>
                         </div>
                     </div>
                 </div>
@@ -406,12 +722,16 @@
                 <!-- Q3 -->
                 <div class="glass-panel rounded-lg overflow-hidden reveal delay-200">
                     <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold">What is an AI Agent?</span>
+                        <span class="font-bold">
+                            <span class="lang-en">What is an AI Agent?</span>
+                            <span class="lang-np">AI एजेन्ट भनेको के हो?</span>
+                        </span>
                         <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-black/20">
                         <div class="px-6 pb-4 text-gray-400 text-sm">
-                            An AI agent is like a smart chatbot. Unlike old chatbots that only knew "yes" or "no", ours can understand natural language, answer specific questions about your products, and guide customers to buy.
+                            <span class="lang-en">An AI agent is like a smart chatbot. Unlike old chatbots that only knew "yes" or "no", ours can understand natural language, answer specific questions about your products, and guide customers to buy.</span>
+                            <span class="lang-np">AI एजेन्ट एउटा स्मार्ट च्याटबोट जस्तै हो। पुरानो च्याटबोटले "हो" वा "होइन" मात्र बुझ्थ्यो, तर हाम्रो AI ले ग्राहकको कुरा बुझेर तपाईंको उत्पादनको बारेमा जवाफ दिन सक्छ।</span>
                         </div>
                     </div>
                 </div>
@@ -422,23 +742,38 @@
     <!-- CONTACT FORM -->
     <section id="contact" class="py-24 bg-gradient-to-t from-black to-brand-dark border-t border-white/5">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-4 reveal">Ready to Upgrade?</h2>
-            <p class="text-gray-400 mb-8 reveal">Fill out the form below to initialize your digital transformation.</p>
+            <h2 class="text-4xl font-bold mb-4 reveal">
+                <span class="lang-en">Ready to Upgrade?</span>
+                <span class="lang-np">के तपाईं तयार हुनुहुन्छ?</span>
+            </h2>
+            <p class="text-gray-400 mb-8 reveal">
+                <span class="lang-en">Fill out the form below to initialize your digital transformation.</span>
+                <span class="lang-np">आफ्नो डिजिटल यात्रा सुरु गर्न तलको फारम भर्नुहोस्।</span>
+            </p>
             
             <form action="contact.php" method="POST" class="glass-panel p-8 rounded-2xl text-left reveal delay-100 border border-brand-cyan/20 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">NAME</label>
+                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">
+                            <span class="lang-en">NAME</span>
+                            <span class="lang-np">नाम</span>
+                        </label>
                         <input type="text" name="name" required class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="John Doe">
                     </div>
                     <div>
-                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">EMAIL</label>
+                        <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">
+                            <span class="lang-en">EMAIL</span>
+                            <span class="lang-np">ईमेल</span>
+                        </label>
                         <input type="email" name="email" required class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="john@example.com">
                     </div>
                 </div>
                 
                 <div class="mb-6">
-                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">INTEREST</label>
+                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">
+                        <span class="lang-en">INTEREST</span>
+                        <span class="lang-np">रुचि</span>
+                    </label>
                     <select name="service" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors">
                         <option>Growth Package (Web + Chatbot)</option>
                         <option>Starter Package (Web Only)</option>
@@ -448,12 +783,17 @@
                 </div>
 
                 <div class="mb-8">
-                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">MESSAGE</label>
+                    <label class="block text-xs font-mono text-brand-cyan mb-2 tracking-widest">
+                        <span class="lang-en">MESSAGE</span>
+                        <span class="lang-np">सन्देश</span>
+                    </label>
                     <textarea name="message" rows="4" class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder-gray-600" placeholder="Tell us about your business..."></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-brand-accent text-brand-dark font-bold py-4 rounded-lg hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all uppercase tracking-wider flex items-center justify-center gap-2">
-                    <i data-lucide="send" class="w-5 h-5"></i> Send Request
+                    <i data-lucide="send" class="w-5 h-5"></i> 
+                    <span class="lang-en">Send Request</span>
+                    <span class="lang-np">पठाउनुहोस्</span>
                 </button>
             </form>
         </div>
@@ -463,7 +803,7 @@
     <footer class="border-t border-white/10 py-12 bg-black">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="flex items-center justify-center gap-3 mb-6">
-                <img class="h-8 w-auto rounded" src="Gemini_Generated_Image_ylwqlqylwqlqylwq.jpg" alt="Logo">
+                <img class="h-8 w-auto rounded" src="assets/ai-studio-logo.png" alt="Logo">
                 <span class="font-mono font-bold text-lg text-white">AI STUDIO <span class="text-brand-cyan">NEPAL</span></span>
             </div>
             <p class="text-gray-600 text-sm">© 2025 AI Studio Nepal. Engineering the Future.</p>
@@ -475,7 +815,19 @@
         // Initialize Icons
         lucide.createIcons();
 
-        // 1. Scroll Reveal Animation
+        // 1. Language Toggle Logic
+        const toggleBtns = [document.getElementById('lang-toggle'), document.getElementById('lang-toggle-mobile')];
+        const body = document.body;
+
+        toggleBtns.forEach(btn => {
+            if(btn) {
+                btn.addEventListener('click', () => {
+                    body.classList.toggle('nepali-mode');
+                });
+            }
+        });
+
+        // 2. Scroll Reveal Animation
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -487,7 +839,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 2. Accordion Logic
+        // 3. Accordion Logic
         const accordions = document.querySelectorAll('.accordion-btn');
         accordions.forEach(acc => {
             acc.addEventListener('click', function() {
@@ -508,7 +860,7 @@
             });
         });
         
-        // 3. Navbar background on scroll
+        // 4. Navbar background on scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
